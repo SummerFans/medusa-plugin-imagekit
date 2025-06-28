@@ -86,8 +86,16 @@ export class ImagekitFileService extends AbstractFileProviderService {
     }
   }
 
-  async getPresignedDownloadUrl(fileData: FileTypes.ProviderGetFileDTO): Promise<string> {
-    const { url } = await this._imagekit.getFileDetails(fileData.fileKey);
-    return url
+  async getPresignedDownloadUrl({ fileKey }: FileTypes.ProviderGetFileDTO): Promise<string> {
+
+    const { filePath } = await this._imagekit.getFileDetails(fileKey);
+
+    const signedUrl = await this._imagekit.url({
+      path: filePath,
+      signed: true,
+      expireSeconds: 1296000
+    })
+
+    return signedUrl
   }
 }
