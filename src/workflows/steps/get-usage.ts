@@ -1,6 +1,7 @@
 import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk";
 import { IMAGEKIT_MODULE } from "../../modules/imagekit";
 import { MedusaError, Modules } from "@medusajs/framework/utils";
+import ImagekitModuleService from "../../modules/imagekit/service";
 
 
 export type GetUsageStepInput = {
@@ -22,7 +23,7 @@ const getUsageStep = createStep(
       )
     }
 
-    const imagekitService = container.resolve(IMAGEKIT_MODULE);
+    const imagekitService:ImagekitModuleService = container.resolve(IMAGEKIT_MODULE);
     const cacheModuleService = container.resolve(
       Modules.CACHE
     )
