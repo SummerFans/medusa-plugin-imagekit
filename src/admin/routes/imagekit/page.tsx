@@ -5,9 +5,13 @@ import { useLoaderData } from "react-router-dom"
 import UsageStatistics from "../../components/usage-statistics"
 import { UsageStatisticsData } from "../../../providers/file-imagekit/types"
 
+declare const __BACKEND_URL__: string;
+
 export async function loader(): Promise<{ useStatistics: UsageStatisticsData }> {
 
-  const res = await fetch(`/admin/plugin/imagekit/usage`)
+  const url = `${__BACKEND_URL__||''}/admin/plugin/imagekit/usage`
+
+  const res = await fetch(url)
   const { result } = await res.json();
 
 
