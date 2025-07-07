@@ -5,6 +5,7 @@ export interface ImagekitOptions {
   privateKey: string;
   imagekitID: string;
   folder?: string; // defailt: /medusa/
+  thumbnail?: boolean; // default true
 }
 
 export interface UsageStatisticsData {

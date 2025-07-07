@@ -37,7 +37,7 @@
   "scripts": {
     "build": "medusa plugin:build",
     "dev": "medusa plugin:develop",
-    "dev:serve": "medusa develop",
+    "dev:srv": "medusa develop",
     "prepublishOnly": "medusa plugin:build"
   },
   "devDependencies": {

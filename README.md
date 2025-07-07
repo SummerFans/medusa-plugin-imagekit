@@ -27,7 +27,8 @@ modules:[
               publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
               privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
               imagekitID: process.env.IMAGEKIT_ID,
-              folder: process.env.IMAGEKIT_FOLDER // default: `/medusa/`
+              folder: process.env.IMAGEKIT_FOLDER, // default: `/medusa/`
+              thumbnail:true      // default true  Save the address with "/tr:w-300/xx.jpg" to save bandwidth.
           },
         }
       ]

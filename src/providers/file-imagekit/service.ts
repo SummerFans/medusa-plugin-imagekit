@@ -34,12 +34,15 @@ export class ImagekitFileService extends AbstractFileProviderService {
 
   constructor(
     { logger }: InjectedDependencies,
-    { publicKey, privateKey, imagekitID, folder }: ImagekitOptions
+    { publicKey, privateKey, imagekitID, folder, thumbnail }: ImagekitOptions
   ) {
     super();
 
     this._logger = logger;
-    this._option = { publicKey, privateKey, imagekitID, folder };
+    this._option = { publicKey, privateKey, imagekitID, folder, thumbnail };
+    if (thumbnail == undefined) {
+      this._option.thumbnail = true
+    }
 
     this._imagekit = new ImageKit({
       publicKey: this._option.publicKey,
@@ -62,15 +65,22 @@ export class ImagekitFileService extends AbstractFileProviderService {
       const extension = file.filename.split('.').pop();
       const fileName = `${uuidv4()}.${extension}`;
 
+      const folder = (this._option.folder || '/medusa').replace(/\/$/ig, '');
+
       const { fileId, url } = await this._imagekit.upload({
         fileName,
         file: content,
-        folder: this._option.folder || '/medusa/'
+        folder,
       })
 
       this._logger.debug('complate upload \r\n')
 
-      return { url: url, key: fileId };
+      let newURL = url;
+      if (this._option.thumbnail) {
+        newURL = url.replace(folder, `${folder}/tr:w-300`)
+      }
+
+      return { url: newURL, key: fileId };
     } catch (e) {
       throw new MedusaError("imagekit.upload.error", e?.message)
     }
