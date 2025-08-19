@@ -2,8 +2,6 @@ import { FileTypes } from "@medusajs/framework/types";
 import { AbstractFileProviderService, isDefined, MedusaError } from "@medusajs/framework/utils";
 import { Logger } from "@medusajs/medusa";
 import ImageKit from "imagekit";
-import { Readable } from "stream";
-import { v4 as uuidv4 } from 'uuid'
 import { ImagekitOptions } from "./types";
 
 type InjectedDependencies = {
@@ -62,13 +60,13 @@ export class ImagekitFileService extends AbstractFileProviderService {
     try {
       const content = Buffer.from(file.content, 'binary');
 
-      const extension = file.filename.split('.').pop();
-      const fileName = `${uuidv4()}.${extension}`;
+      // const extension = file.filename.split('.').pop();
+      // const fileName = `${uuidv4()}.${extension}`;
 
       const folder = (this._option.folder || '/medusa').replace(/\/$/ig, '');
 
       const { fileId, url } = await this._imagekit.upload({
-        fileName,
+        fileName: file.filename,
         file: content,
         folder,
       })

@@ -1,6 +1,6 @@
 {
   "name": "medusa-plugin-imagekit",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Imagekit file connector for Medusa v2",
   "author": "SummerFans (https://github.com/SummerFans)",
   "license": "MIT",
@@ -82,8 +82,7 @@
     "@mikro-orm/postgresql": "6.4.3",
     "awilix": "^8.0.1",
     "pg": "^8.13.0",
-    "imagekit": "^6.0.0",
-    "uuid": "^10.0.0"
+    "imagekit": "^6.0.0"
   },
   "engines": {
     "node": ">=20"
