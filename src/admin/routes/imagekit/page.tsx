@@ -9,20 +9,16 @@ declare const __BACKEND_URL__: string;
 
 export async function loader(): Promise<{ useStatistics: UsageStatisticsData }> {
 
-  const url = `${__BACKEND_URL__==='/'?'':__BACKEND_URL__}/admin/plugin/imagekit/usage`
+  const url = `${__BACKEND_URL__||''}/admin/plugin/imagekit/usage`
 
-  console.log(url)
-
-  const res = await fetch(url, {
+  const res = await fetch(url.replace('//','/'), {
     method: 'GET',
     credentials: 'include',
   })
   const { result } = await res.json();
 
-
   return { useStatistics: result }
 }
-
 
 const ImagekitPage = () => {
   const { useStatistics } = useLoaderData() as Awaited<ReturnType<typeof loader>>
