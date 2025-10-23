@@ -23,19 +23,22 @@ const getUsageStep = createStep(
       )
     }
 
-    const imagekitService:ImagekitModuleService = container.resolve(IMAGEKIT_MODULE);
-    const cacheModuleService = container.resolve(
-      Modules.CACHE
+    const imagekitService: ImagekitModuleService = container.resolve(IMAGEKIT_MODULE);
+    const cachingModuleService = container.resolve(
+      Modules.CACHING
     )
-    const usageStr = await cacheModuleService.get(USAGE_CACHE_NAME);
+    const usageStr = await cachingModuleService.get({ key: USAGE_CACHE_NAME });
 
     if (usageStr) {
-      const usage = JSON.parse(usageStr as string)
-      return new StepResponse(usage)
+      return new StepResponse(usageStr)
     }
     try {
       const result = await imagekitService.usageStatistics(startDate, endDate);
-      await cacheModuleService.set(USAGE_CACHE_NAME, JSON.stringify(result), USAGE_CACHE_TTL);
+      await cachingModuleService.set({
+            key: USAGE_CACHE_NAME,
+            data: result,
+            ttl:USAGE_CACHE_TTL
+        })
       return new StepResponse(result);
     } catch (e) {
       throw new MedusaError(MedusaError.Types.INVALID_DATA, e.message);
