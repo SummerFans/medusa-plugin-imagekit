@@ -1,6 +1,6 @@
 {
   "name": "medusa-plugin-imagekit",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Imagekit file connector for Medusa v2",
   "author": "SummerFans (https://github.com/SummerFans)",
   "license": "MIT",
