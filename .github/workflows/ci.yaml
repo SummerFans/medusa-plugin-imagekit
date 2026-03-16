@@ -18,14 +18,14 @@ jobs:
         run: yarn run build
   release:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - build
     permissions:
       contents: write
       issues: write
       pull-requests: write
       id-token: write
-    if: github.ref == 'refs/heads/main'
-    needs:
-      - build
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
