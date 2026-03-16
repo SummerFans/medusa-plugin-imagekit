@@ -40,8 +40,10 @@
     "dev:srv": "medusa develop",
     "prepublishOnly": "medusa plugin:build"
   },
+  "dependencies": {
+    "@imagekit/nodejs": "^7.3.0"
+  },
   "devDependencies": {
-    "@swc/core": "^1.7.28",
     "@swc/jest": "^0.2.36",
     "@types/jest": "^29.5.13",
     "@types/node": "^20.12.11",
@@ -57,16 +59,14 @@
     "yalc": "^1.0.0-pre.53"
   },
   "peerDependencies": {
-    "@medusajs/admin-sdk": "^2.10.4",
-    "@medusajs/cli": "^2.10.4",
-    "@medusajs/framework": "^2.10.4",
-    "@medusajs/test-utils": "^2.10.4",
-    "@medusajs/medusa": "^2.10.4",
-    "@medusajs/ui": "^4.0.3",
-    "@medusajs/icons": "^2.10.4",
-    "imagekit": "^6.0.0"
+    "@medusajs/admin-sdk": "^2.11.0",
+    "@medusajs/cli": "^2.11.0",
+    "@medusajs/framework": "^2.11.0",
+    "@medusajs/medusa": "^2.11.0",
+    "@medusajs/test-utils": "^2.11.0"
   },
   "engines": {
     "node": ">=20"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
