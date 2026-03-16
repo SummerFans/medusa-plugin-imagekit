@@ -18,12 +18,12 @@ jobs:
         run: yarn run build
   release:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     permissions:
       contents: write
       issues: write
       pull-requests: write
       id-token: write
+    if: github.ref == 'refs/heads/main'
     needs:
       - build
     steps:
@@ -47,4 +47,4 @@ jobs:
           branch: main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          
