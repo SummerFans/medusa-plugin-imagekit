@@ -29,9 +29,8 @@ jobs:
 
       - name: Publish to npm
         run: |
-          yarn config set registry https://registry.npmjs.org/
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-          yarn publish --access public
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN} 
+          npm publish --access public
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
