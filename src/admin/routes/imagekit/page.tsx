@@ -9,7 +9,7 @@ declare const __BACKEND_URL__: string;
 
 export async function loader(): Promise<{ useStatistics: UsageStatisticsData }> {
 
-  const url = `${__BACKEND_URL__}/admin/plugin/imagekit/usage`
+  const url = `${__BACKEND_URL__}admin/plugin/imagekit/usage`
 
   const res = await fetch(url, {
     method: 'GET',

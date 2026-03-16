@@ -1,7 +1,7 @@
 import { MedusaError, MedusaService } from "@medusajs/framework/utils";
 import { Logger } from "@medusajs/medusa";
 import { ImagekitOptions, UsageStatisticsData } from "../../providers/file-imagekit/types";
-import ImageKit from "imagekit";
+import ImageKit from "@imagekit/nodejs";
 
 type InjectedDependencies = {
   logger: Logger;
@@ -19,10 +19,21 @@ class ImagekitModuleService extends MedusaService({}) {
     this._options = options;
     this._logger = container.logger;
 
+//   privateKey: string;
+//   password: string | null;
+//   webhookSecret: string | null;
+
+//   baseURL: string;
+//   maxRetries: number;
+//   timeout: number;
+//   logger: Logger;
+//   logLevel: LogLevel | undefined;
+//   fetchOptions: MergedRequestInit | undefined;
+
     this._imagekit = new ImageKit({
-      publicKey: this._options.publicKey,
+      // publicKey: this._options.publicKey,
       privateKey: this._options.privateKey,
-      urlEndpoint: `https://ik.imagekit.io/${this._options.imagekitID}/`
+      // urlEndpoint: `https://ik.imagekit.io/${this._options.imagekitID}/`
     });
   }
 
