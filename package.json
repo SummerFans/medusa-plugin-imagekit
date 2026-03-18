@@ -49,6 +49,7 @@
     "@medusajs/framework": "^2.11.0",
     "@medusajs/medusa": "^2.11.0",
     "@medusajs/test-utils": "^2.11.0",
+    "@swc/core": "^1.15.18",
     "@swc/jest": "^0.2.36",
     "@swc/wasm": "^1.15.18",
     "@types/jest": "^29.5.13",
