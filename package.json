@@ -66,11 +66,8 @@
     "yalc": "^1.0.0-pre.53"
   },
   "peerDependencies": {
-    "@medusajs/admin-sdk": "^2.11.0",
-    "@medusajs/cli": "^2.11.0",
     "@medusajs/framework": "^2.11.0",
-    "@medusajs/medusa": "^2.11.0",
-    "@medusajs/test-utils": "^2.11.0"
+    "@medusajs/medusa": "^2.11.0"
   },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
